@@ -4,6 +4,7 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
   const [title, setTitle] = useState(seminar?.title || "");
   const [description, setDescription] = useState(seminar?.description || "");
   const [date, setDate] = useState(seminar?.date || "");
+  const modalRef = useRef(null);
 
   useEffect(() => {
     if (seminar) {
@@ -17,9 +18,28 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
     }
   }, [seminar]);
 
+  useEffect(() => {
+    if (isOpen) {
+      modalRef.current.focus();
+    }
+  }, [isOpen]);
+
   if (!isOpen) {
     return null;
   }
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.keyCode === 27) {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +48,7 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
   };
 
   return (
-    <div className="modal">
+    <div className="modal" ref={modalRef} tabIndex="0">
       <div className="modal-content">
         <span className="close" onClick={onClose}>
           &times;
