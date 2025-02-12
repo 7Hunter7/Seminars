@@ -1,4 +1,7 @@
 {
+  "name": "react-seminars-app",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -16,5 +19,23 @@
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
