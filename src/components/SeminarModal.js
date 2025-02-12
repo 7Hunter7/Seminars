@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
   const [title, setTitle] = useState(seminar?.title || "");
@@ -24,10 +24,6 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
     }
   }, [isOpen]);
 
-  if (!isOpen) {
-    return null;
-  }
-
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.keyCode === 27) {
@@ -46,6 +42,10 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
     onSubmit({ id: seminar?.id, title, description, date });
     onClose();
   };
+
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className="modal" ref={modalRef} tabIndex="0">
