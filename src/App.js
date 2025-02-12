@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SeminarList from "@/components/SeminarList";
 import SeminarModal from "@/components/SeminarModal";
 import ConfirmationModal from "@/components/ConfirmationModal";
-import Notification from "@/components/Notification";
+import SystemMessage from "@/components/SystemMessage";
 import {
   getSeminars,
   deleteSeminar,
@@ -145,7 +145,7 @@ function App() {
       />
 
       {notification && (
-        <Notification
+        <SystemMessage
           message={notification.message}
           type={notification.type}
           onClose={hideNotification}
