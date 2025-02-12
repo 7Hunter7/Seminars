@@ -6,7 +6,8 @@ export const getSeminars = async () => {
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
-  return response.json();
+  const data = await response.json();
+  return data.seminars;
 };
 
 // Удаление семинара
