@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3001/seminars";
+const API_URL = "/seminars";
 
 // Получение всех семинаров
 export const getSeminars = async () => {
