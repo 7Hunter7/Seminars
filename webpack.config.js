@@ -14,8 +14,16 @@ module.exports = {
     },
   },
   devServer: {
-    static: "./public",
+    static: "./dist",
     hot: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:3001",
+        changeOrigin: true,
+        pathRewrite: { "^/api": "" },
+        logLevel: "debug", // Для отладки
+      },
+    },
   },
   module: {
     rules: [
