@@ -1,0 +1,50 @@
+const API_URL = "http://localhost:3001/seminars";
+
+// Получение всех семинаров
+export const getSeminars = async () => {
+  const response = await fetch(API_URL);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
+};
+
+// Удаление семинара
+export const deleteSeminar = async (id) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+};
+
+// Редактирование семинара
+export const updateSeminar = async (id, seminarData) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "PUT", // или PATCH (в зависимости от требований API)
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(seminarData),
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
+};
+
+// Создание семинара
+export const createSeminar = async (seminarData) => {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(seminarData),
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
+};
