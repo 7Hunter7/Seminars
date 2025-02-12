@@ -25,11 +25,13 @@ function App() {
   }, []);
 
   const fetchSeminars = async () => {
+    console.log("fetchSeminars called");
     setLoading(true);
     setError(null);
     try {
       const data = await getSeminars();
       setSeminars(data);
+      console.log(seminars);
     } catch (err) {
       setError(err.message);
     } finally {
