@@ -9,10 +9,17 @@ ul {
 li {
   margin-bottom: 10px;
   border: 1px solid #ccc;
+  border-radius: 6px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 button {
   background-color: #4caf50;
@@ -26,9 +33,13 @@ button {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 5px;
+  transition: opacity 0.3s ease;
 }
 button:hover {
   opacity: 0.8;
+}
+button:active {
+  opacity: 0.6;
 }
 /* Стили для Модальных окон */
 .modal {
