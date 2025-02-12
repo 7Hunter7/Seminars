@@ -2,12 +2,17 @@ const API_URL = "/api/seminars";
 
 // Получение всех семинаров
 export const getSeminars = async () => {
-  const response = await fetch(API_URL);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Ошибка при получении семинаров:", error);
+    throw error;
   }
-  const data = await response.json();
-  return data.seminars;
 };
 
 // Удаление семинара
