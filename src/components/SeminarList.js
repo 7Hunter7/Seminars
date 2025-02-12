@@ -1,5 +1,5 @@
 import React from "react";
-import SeminarItem from "./SeminarItem";
+import SeminarItem from "@/components/SeminarItem";
 
 const SeminarList = ({ seminars, onDelete, onEdit }) => {
   return (
