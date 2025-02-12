@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SeminarList from "@/components/SeminarList";
 import SeminarModal from "@/components/SeminarModal";
 import ConfirmationModal from "@/components/ConfirmationModal";
+import Notification from "@/components/Notification";
 import {
   getSeminars,
   deleteSeminar,
@@ -19,24 +20,31 @@ function App() {
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [seminarToDeleteId, setSeminarToDeleteId] = useState(null);
   const [isNewSeminarModalOpen, setIsNewSeminarModalOpen] = useState(false);
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     fetchSeminars();
   }, []);
 
   const fetchSeminars = async () => {
-    console.log("fetchSeminars called");
     setLoading(true);
     setError(null);
     try {
       const data = await getSeminars();
       setSeminars(data);
-      console.log(seminars);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
+  };
+
+  const showNotification = (message, type = "success") => {
+    setNotification({ message, type });
+  };
+
+  const hideNotification = () => {
+    setNotification(null);
   };
 
   const handleEditSeminar = (seminar) => {
@@ -57,8 +65,10 @@ function App() {
         seminars.filter((seminar) => seminar.id !== seminarToDeleteId)
       );
       setSeminarToDeleteId(null);
+      showNotification("Семинар успешно удален!", "success");
     } catch (err) {
       setError(err.message);
+      showNotification("Ошибка удаления семинара: " + err.message, "error");
     }
   };
 
@@ -81,9 +91,11 @@ function App() {
             seminar.id === seminarData.id ? seminarData : seminar
           )
         );
+        showNotification("Семинар успешно обновлен!", "success");
       } else {
         const newSeminar = await createSeminar(seminarData);
         setSeminars([...seminars, newSeminar]);
+        showNotification("Новый семинар успешно добавлен!", "success");
       }
 
       closeModal();
@@ -91,6 +103,7 @@ function App() {
       fetchSeminars();
     } catch (err) {
       setError(err.message);
+      showNotification("Ошибка сохранения семинара: " + error.message, "error");
     }
   };
 
@@ -130,6 +143,14 @@ function App() {
         onConfirm={confirmDelete}
         message="Вы уверены, что хотите удалить этот семинар?"
       />
+
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={hideNotification}
+        />
+      )}
     </div>
   );
 }
