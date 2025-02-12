@@ -4,8 +4,10 @@ const SeminarItem = ({ seminar, onDelete, onEdit }) => {
   return (
     <li>
       {seminar.title} - {seminar.date}
-      <button onClick={() => onEdit(seminar)}>Редактировать</button>
-      <button onClick={() => onDelete(seminar.id)}>Удалить</button>
+      <div className="actions">
+        <button onClick={() => onEdit(seminar)}>Редактировать</button>
+        <button onClick={() => onDelete(seminar.id)}>Удалить</button>
+      </div>
     </li>
   );
 };
