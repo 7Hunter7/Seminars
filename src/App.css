@@ -2,12 +2,10 @@
   font-family: sans-serif;
   padding: 20px;
 }
-
 ul {
   list-style: none;
   padding: 0;
 }
-
 li {
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -16,7 +14,6 @@ li {
   justify-content: space-between;
   align-items: center;
 }
-
 button {
   background-color: #4caf50;
   border: none;
@@ -30,11 +27,10 @@ button {
   cursor: pointer;
   border-radius: 5px;
 }
-
 button:hover {
   opacity: 0.8;
 }
-
+/* Стили для Модальных окон */
 .modal {
   position: fixed;
   top: 0;
@@ -47,7 +43,6 @@ button:hover {
   align-items: center;
   z-index: 1000;
 }
-
 .modal-content {
   background-color: white;
   padding: 20px;
@@ -56,7 +51,6 @@ button:hover {
   max-width: 600px;
   position: relative;
 }
-
 .modal .close {
   position: absolute;
   top: 10px;
@@ -65,7 +59,6 @@ button:hover {
   cursor: pointer;
   color: #888;
 }
-
 .modal input[type="text"],
 .modal input[type="date"],
 .modal textarea {
@@ -77,12 +70,10 @@ button:hover {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
 .modal label {
   display: block;
   margin-bottom: 5px;
 }
-
 .modal button[type="submit"] {
   background-color: #4caf50;
   color: white;
@@ -92,7 +83,54 @@ button:hover {
   cursor: pointer;
   width: 100%;
 }
-
 .modal button[type="submit"]:hover {
   background-color: #45a049;
+}
+/* Стили для Уведомлений */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.notification p {
+  margin: 0;
+}
+.notification button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+}
+.notification.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+.notification.error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+/* Анимация появления */
+.notification.enter {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Анимация исчезновения */
+.notification.exit {
+  opacity: 0;
+  transform: translateX(200%);
 }
