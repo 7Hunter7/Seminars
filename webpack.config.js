@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: "development", // 'production'
+  mode: "development",
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -16,14 +16,15 @@ module.exports = {
   devServer: {
     static: "./dist",
     hot: true,
-    proxy: {
-      "/api": {
+    proxy: [
+      {
+        context: ["/api"],
         target: "http://localhost:3001",
         changeOrigin: true,
         pathRewrite: { "^/api": "" },
-        logLevel: "debug", // Для отладки
+        logLevel: "debug",
       },
-    },
+    ],
   },
   module: {
     rules: [
