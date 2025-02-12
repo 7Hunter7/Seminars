@@ -1,0 +1,33 @@
+# Общие исключения
+
+.DS_Store             # macOS
+Thumbs.db             # Windows
+
+# Исключения для Node.js
+
+node_modules/          # Зависимости Node.js
+npm-debug.log*         # Логи npm
+yarn-debug.log*        # Логи yarn
+yarn-error.log*        # Логи yarn
+.pnpm*                # pnpm store
+
+# Исключения для сборки React
+
+build/                 # Сборка React приложения
+dist/                  # Сборка React приложения (если используете webpack)
+
+# Исключения для среды разработки
+
+.env                   # Файл с переменными окружения (если есть)
+.env.local
+.env.development.local
+.env.test.local
+
+# Исключения для редакторов и IDE
+
+.idea/                 # IntelliJ IDEA
+.vscode/               # VS Code
+*.suo                  # Visual Studio
+*.ntvs*                # Visual Studio
+*.njsproj              # Visual Studio
+*.sln                  # Visual Studio
