@@ -4,6 +4,8 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
   const [title, setTitle] = useState(seminar?.title || "");
   const [description, setDescription] = useState(seminar?.description || "");
   const [date, setDate] = useState(seminar?.date || "");
+  const [time, setTime] = useState(seminar?.time || "");
+  const [photo, setPhoto] = useState(seminar?.photo || "");
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -11,10 +13,14 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
       setTitle(seminar.title || "");
       setDescription(seminar.description || "");
       setDate(seminar.date || "");
+      setTime(seminar.time || "");
+      setPhoto(seminar.photo || "");
     } else {
       setTitle("");
       setDescription("");
       setDate("");
+      setTime("");
+      setPhoto("");
     }
   }, [seminar]);
 
@@ -39,7 +45,7 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ id: seminar?.id, title, description, date });
+    onSubmit({ id: seminar?.id, title, description, date, time, photo });
     onClose();
   };
 
@@ -82,6 +88,24 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
+            />
+          </div>
+          <div>
+            <label htmlFor="time">Время:</label>
+            <input
+              type="time"
+              id="time"
+              value={time}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="photo">Фото:</label>
+            <input
+              type="url"
+              id="photo"
+              value={photo}
+              onChange={(e) => setDate(e.target.value)}
             />
           </div>
           <button type="submit">Сохранить</button>
