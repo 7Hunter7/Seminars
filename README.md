@@ -79,6 +79,35 @@ react-seminars-app/
 
     Это запустит приложение в режиме разработки на `http://localhost:8080`.
 
+## Запуск сервера приложения с использованием Git Bash:
+
+Git Bash предоставляет Unix-подобную среду командной строки в Windows.
+
+1. Установите `Git Bash` (если он ещё не установлен):
+   - Скачайте и установите Git с официального сайта: `https://git-scm.com/downloads`
+   - Во время установки выберите опцию `Use Git from Git Bash only` или `Use Git and optional Unix tools from Windows Command Prompt`.
+2. Откройте Git Bash:
+   - Найдите `Git Bash` в меню “Пуск” и запустите его.
+3. Перейдите в папку json-server:
+
+   - Используйте команду `cd`, чтобы перейти в папку json-server. Учтите, что в Git Bash пути к дискам выглядят иначе (например, F: становится /f/).
+
+```bash
+   cd /d/Projects/react-seminars-app/json-server
+```
+
+4. Сделайте файл start.sh исполняемым:
+
+```bash
+  chmod +x start.sh
+```
+
+5. Запустите start.sh:
+
+```bash
+   ./start.sh
+```
+
 ## Настройка
 
 - **Данные семинаров:** Отредактируйте файл `json-server/db.json`, чтобы изменить данные о семинарах.
