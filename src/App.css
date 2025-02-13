@@ -191,8 +191,7 @@ button:active {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: none;
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
@@ -204,8 +203,7 @@ button:active {
 /* Убираем focus outline */
 .modal__form_photoInput:focus {
   outline: none;
-  border-color: #66afe9;
-  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+  border: none;
 }
 .modal__form_imagePreview {
   max-width: 200px;
