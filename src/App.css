@@ -38,12 +38,13 @@ button:active {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 20px;
   position: relative;
 }
 .seminar:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 .seminar__image {
   width: 100%;
@@ -72,9 +73,8 @@ button:active {
 }
 .seminar__actions {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 10px;
+  bottom: 10px;
+  right: 10px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
