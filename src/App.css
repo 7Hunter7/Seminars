@@ -166,13 +166,6 @@ button:active {
   border-color: #5cb85c;
   box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
 }
-.modal__form_imagePreview {
-  max-width: 200px;
-  max-height: 200px;
-  object-fit: cover;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
 .modal__submitButton {
   background-color: #4caf50;
   color: white;
@@ -191,6 +184,35 @@ button:active {
   color: #d9534f;
   font-size: 0.9rem;
   margin-top: 5px;
+}
+/* Стили для поля выбора файла (photo) */
+.modal__form_photoInput {
+  /* Удаляем стандартные стили */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+}
+/* Убираем focus outline */
+.modal__form_photoInput:focus {
+  outline: none;
+  border-color: #66afe9;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+.modal__form_imagePreview {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 /* Стили для Уведомлений */
 .notification {
