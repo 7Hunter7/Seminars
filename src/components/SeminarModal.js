@@ -55,60 +55,77 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
 
   return (
     <div className="modal" ref={modalRef} tabIndex="0">
-      <div className="modal-content">
-        <span className="close" onClick={onClose}>
+      <div className="modal__content">
+        <span className="modal__close" onClick={onClose}>
           &times;
         </span>
         <h2>{seminar ? "Редактировать Семинар" : "Добавить Семинар"}</h2>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="title">Заголовок:</label>
+          <div className="modal__form">
+            <label htmlFor="title" className="modal__form_label">
+              Заголовок:
+            </label>
             <input
               type="text"
               id="title"
+              className="modal__form_input"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
             />
           </div>
-          <div>
-            <label htmlFor="description">Описание:</label>
+          <div className="modal__form">
+            <label htmlFor="description" className="modal__form_label">
+              Описание:
+            </label>
             <textarea
               id="description"
+              className="modal__form_textarea"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
             />
           </div>
-          <div>
-            <label htmlFor="date">Дата:</label>
+          <div className="modal__form">
+            <label htmlFor="date" className="modal__form_label">
+              Дата:
+            </label>
             <input
               type="date"
               id="date"
+              className="modal__form_input"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
             />
           </div>
-          <div>
-            <label htmlFor="time">Время:</label>
+          <div className="modal__form">
+            <label htmlFor="time" className="modal__form_label">
+              Время:
+            </label>
             <input
               type="time"
               id="time"
+              className="modal__form_input"
               value={time}
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
-          <div>
-            <label htmlFor="photo">Фото:</label>
+          <div className="modal__form">
+            <label htmlFor="photo" className="modal__form_label">
+              Фото:
+            </label>
             <input
               type="url"
               id="photo"
+              className="modal__form_input"
               value={photo}
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
-          <button type="submit">Сохранить</button>
+          <button type="submit" className="modal__submitButton">
+            Сохранить
+          </button>
         </form>
       </div>
     </div>
