@@ -3,13 +3,15 @@ import React from "react";
 const SeminarItem = ({ seminar, onDelete, onEdit }) => {
   return (
     <li className="seminar">
-      <img
-        className="seminar__image"
-        src={seminar.photo}
-        alt={seminar.photoAlt}
-        width="750"
-        height="730"
-      />
+      {seminar.photo ? ( // Условный рендеринг
+        <img
+          className="seminar__image"
+          src={seminar.photo}
+          alt={seminar.photoAlt}
+          width="750"
+          height="730"
+        />
+      ) : null}
       <div className="seminar__content">
         <h2 className="seminar__title">{seminar.title}</h2>
         <p className="seminar__description">{seminar.description}</p>
