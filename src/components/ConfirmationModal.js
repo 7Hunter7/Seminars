@@ -7,7 +7,7 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, message }) => {
 
   return (
     <div className="modal">
-      <div className="modal-content">
+      <div className="modal__content">
         <p>{message}</p>
         <button onClick={onConfirm}>Подтвердить</button>
         <button onClick={onClose}>Отмена</button>
