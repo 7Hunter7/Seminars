@@ -166,6 +166,13 @@ button:active {
   border-color: #5cb85c;
   box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
 }
+.modal__form_imagePreview {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 .modal__submitButton {
   background-color: #4caf50;
   color: white;
