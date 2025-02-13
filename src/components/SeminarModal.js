@@ -141,7 +141,7 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
               id="photo"
               className="modal__form_input"
               value={photo}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => setPhoto(e.target.value)}
             />
           </div>
           <button type="submit" className="modal__submitButton">
