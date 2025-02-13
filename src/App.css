@@ -2,25 +2,6 @@
   font-family: sans-serif;
   padding: 20px;
 }
-ul {
-  list-style: none;
-  padding: 0;
-}
-li {
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.actions {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
 button {
   background-color: #4caf50;
   border: none;
@@ -40,6 +21,85 @@ button:hover {
 }
 button:active {
   opacity: 0.6;
+}
+/* Стили для списка семинаров*/
+.list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.seminar {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin-bottom: 20px;
+  position: relative;
+}
+.seminar:hover {
+  transform: translateY(-5px);
+}
+.seminar__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+.seminar__content {
+  padding: 20px;
+}
+.seminar__title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+.seminar__description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+.seminar__dateTime {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 20px;
+}
+.seminar__actions {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 10px;
+}
+.seminar__actions button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+.seminar__actions button:first-child {
+  background-color: #5cb85c;
+  color: white;
+}
+.seminar__actions button:first-child:hover {
+  background-color: #4cae4c;
+}
+.seminar__actions button:last-child {
+  background-color: #d9534f;
+  color: white;
+}
+.seminar__actions button:last-child:hover {
+  background-color: #c9302c;
 }
 /* Стили для Модальных окон */
 .modal {
