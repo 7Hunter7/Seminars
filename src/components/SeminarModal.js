@@ -5,7 +5,11 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
   const [description, setDescription] = useState(seminar?.description || "");
   const [date, setDate] = useState(seminar?.date || "");
   const [time, setTime] = useState(seminar?.time || "");
-  const [photo, setPhoto] = useState(seminar?.photo || "");
+
+  const [photoFile, setPhotoFile] = useState(null);
+  const [photoAlt, setPhotoAlt] = useState(seminar?.photoAlt || "");
+  const [photoUrl, setPhotoUrl] = useState(seminar?.photo || "");
+
   const modalRef = useRef(null);
 
   // Функция для преобразования формата даты из dd.MM.yyyy в yyyy-MM-dd
@@ -24,13 +28,17 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
       setDescription(seminar.description || "");
       setDate(formatDate(seminar.date) || "");
       setTime(seminar.time || "");
-      setPhoto(seminar.photo || "");
+      setPhotoAlt(seminar.photoAlt || "");
+      setPhotoUrl(seminar.photo || "");
+      setPhotoFile(null); //Сброс файла при редактировании
     } else {
       setTitle("");
       setDescription("");
       setDate("");
       setTime("");
-      setPhoto("");
+      setPhotoAlt("");
+      setPhotoUrl("");
+      setPhotoFile(null);
     }
   }, [seminar]);
 
@@ -53,6 +61,21 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
     };
   }, [onClose]);
 
+  const handlePhotoChange = (event) => {
+    const file = event.target.files[0];
+    setPhotoFile(file);
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPhotoUrl(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPhotoUrl(""); // Очистить превью если нет файла
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Преобразование даты обратно в формат dd.MM.yyyy перед отправкой данных
@@ -65,7 +88,8 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
       description,
       date: formattedDate,
       time,
-      photo,
+      photo: photoUrl, //  URL изображения
+      photoAlt,
     });
     onClose();
   };
@@ -137,11 +161,32 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
               Фото:
             </label>
             <input
-              type="text"
+              type="file"
               id="photo"
               className="modal__form_input"
-              value={photo}
-              onChange={(e) => setPhoto(e.target.value)}
+              accept="image/*" // Разрешаем только изображения
+              onChange={handlePhotoChange}
+            />
+          </div>
+          {photoUrl && (
+            <div className="modal__form">
+              <img
+                src={photoUrl}
+                alt={photoAlt}
+                className="modal__form_imagePreview"
+              />
+            </div>
+          )}
+          <div className="modal__form">
+            <label htmlFor="photoAlt" className="modal__form_label">
+              Описание фото:
+            </label>
+            <input
+              type="text"
+              id="photoAlt"
+              className="modal__form_input"
+              value={photoAlt}
+              onChange={(e) => setPhotoAlt(e.target.value)}
             />
           </div>
           <button type="submit" className="modal__submitButton">
