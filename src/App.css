@@ -50,6 +50,7 @@ button:active {
   width: 100%;
   height: auto;
   object-fit: cover;
+  border-radius: 8px;
   border-bottom: 1px solid #eee;
 }
 .seminar__content {
