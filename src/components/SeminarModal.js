@@ -156,18 +156,6 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
-          <div className="modal__form">
-            <label htmlFor="photo" className="modal__form_label">
-              Фото:
-            </label>
-            <input
-              type="file"
-              id="photo"
-              className="modal__form_input"
-              accept="image/*" // Разрешаем только изображения
-              onChange={handlePhotoChange}
-            />
-          </div>
           {photoUrl && (
             <div className="modal__form">
               <img
@@ -177,6 +165,18 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
               />
             </div>
           )}
+          <div className="modal__form">
+            <label htmlFor="photo" className="modal__form_label">
+              Фото:
+            </label>
+            <input
+              type="file"
+              id="photo"
+              className="modal__form_photoInput"
+              accept="image/*" // Разрешаем только изображения
+              onChange={handlePhotoChange}
+            />
+          </div>
           <div className="modal__form">
             <label htmlFor="photoAlt" className="modal__form_label">
               Описание фото:
