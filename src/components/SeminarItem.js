@@ -1,19 +1,26 @@
 import React from "react";
+import styles from "@/components/SeminarItem.module.css";
 
 const SeminarItem = ({ seminar, onDelete, onEdit }) => {
   return (
-    <li className="seminar">
-      <div className="seminar__content">
-        <img className="image" src="{seminar.photo}" alt="Seminar photo" />
-        <h2 className="title">{seminar.title}</h2>
-        <p className="description">{seminar.description} </p>
-        <div className="date">
-          Начало в {seminar.time} часов {seminar.date}
+    <li className={styles.seminar}>
+      <img
+        className={styles.image}
+        src={seminar.photo}
+        alt="Seminar photo"
+        width="750"
+        height="730"
+      />
+      <div className={styles.content}>
+        <h2 className={styles.title}>{seminar.title}</h2>
+        <p className={styles.description}>{seminar.description}</p>
+        <p className={styles.dateTime}>
+          Начало: {seminar.date} в {seminar.time}
+        </p>
+        <div className={styles.actions}>
+          <button onClick={() => onEdit(seminar)}>Редактировать</button>
+          <button onClick={() => onDelete(seminar.id)}>Удалить</button>
         </div>
-      </div>
-      <div className="actions">
-        <button onClick={() => onEdit(seminar)}>Редактировать</button>
-        <button onClick={() => onDelete(seminar.id)}>Удалить</button>
       </div>
     </li>
   );
