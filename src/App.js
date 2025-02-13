@@ -19,7 +19,6 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [seminarToDeleteId, setSeminarToDeleteId] = useState(null);
-  const [isNewSeminarModalOpen, setIsNewSeminarModalOpen] = useState(false);
   const [notification, setNotification] = useState(null);
 
   useEffect(() => {
@@ -99,7 +98,6 @@ function App() {
       }
 
       closeModal();
-      setIsNewSeminarModalOpen(false);
       fetchSeminars();
     } catch (err) {
       setError(err.message);
@@ -109,7 +107,7 @@ function App() {
 
   const openNewSeminarModal = () => {
     setSelectedSeminar(null);
-    setIsNewSeminarModalOpen(true);
+    setIsModalOpen(true);
   };
 
   if (loading) {
@@ -131,7 +129,7 @@ function App() {
       />
 
       <SeminarModal
-        isOpen={isModalOpen || isNewSeminarModalOpen}
+        isOpen={isModalOpen}
         onClose={closeModal}
         seminar={selectedSeminar}
         onSubmit={handleSeminarSubmit}
