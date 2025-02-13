@@ -1,9 +1,10 @@
 import React from "react";
-import SeminarItem from "@/components/SeminarItem";
+import SeminarItem from "./SeminarItem";
+import styles from "@/components/SeminarList.module.css";
 
 const SeminarList = ({ seminars, onDelete, onEdit }) => {
   return (
-    <ul>
+    <ul className={styles.list}>
       {seminars.map((seminar) => (
         <SeminarItem
           key={seminar.id}
