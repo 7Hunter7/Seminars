@@ -114,7 +114,7 @@ button:active {
   align-items: center;
   z-index: 1000;
 }
-.modal-content {
+.modal__content {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
@@ -122,7 +122,7 @@ button:active {
   max-width: 600px;
   position: relative;
 }
-.modal .close {
+.modal__close {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -130,9 +130,23 @@ button:active {
   cursor: pointer;
   color: #888;
 }
-.modal input[type="text"],
-.modal input[type="date"],
-.modal textarea {
+.modal__content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+}
+.modal__form {
+  margin-bottom: 15px;
+}
+.modal__form_label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.modal__form_input,
+.modal__form_textarea {
   width: 100%;
   padding: 8px;
   margin: 5px 0 15px 0;
@@ -140,12 +154,19 @@ button:active {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 1rem;
 }
-.modal label {
-  display: block;
-  margin-bottom: 5px;
+.modal__form_textarea {
+  resize: vertical;
+  min-height: 100px;
 }
-.modal button[type="submit"] {
+.modal__form_input:focus,
+.modal__form_textarea:focus {
+  outline: none;
+  border-color: #5cb85c;
+  box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
+}
+.modal__submitButton {
   background-color: #4caf50;
   color: white;
   padding: 10px 20px;
@@ -153,9 +174,16 @@ button:active {
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
 }
-.modal button[type="submit"]:hover {
+.modal__submitButton:hover {
   background-color: #45a049;
+}
+.errorMessage {
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-top: 5px;
 }
 /* Стили для Уведомлений */
 .notification {
