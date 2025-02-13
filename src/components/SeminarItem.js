@@ -6,7 +6,7 @@ const SeminarItem = ({ seminar, onDelete, onEdit }) => {
       <img
         className="seminar__image"
         src={seminar.photo}
-        alt="Seminar photo"
+        alt={seminar.photoAlt}
         width="750"
         height="730"
       />
