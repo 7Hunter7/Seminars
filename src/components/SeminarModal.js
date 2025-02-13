@@ -8,11 +8,21 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
   const [photo, setPhoto] = useState(seminar?.photo || "");
   const modalRef = useRef(null);
 
+  // Функция для преобразования формата даты из dd.MM.yyyy в yyyy-MM-dd
+  function formatDate(dateString) {
+    if (!dateString) return ""; // Обработка пустой даты
+    const parts = dateString.split(".");
+    if (parts.length === 3) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+    return ""; // Если формат не соответствует
+  }
+
   useEffect(() => {
     if (seminar) {
       setTitle(seminar.title || "");
       setDescription(seminar.description || "");
-      setDate(seminar.date || "");
+      setDate(formatDate(seminar.date) || "");
       setTime(seminar.time || "");
       setPhoto(seminar.photo || "");
     } else {
@@ -45,7 +55,18 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ id: seminar?.id, title, description, date, time, photo });
+    // Преобразование даты обратно в формат dd.MM.yyyy перед отправкой данных
+    const formattedDate = date
+      ? `${date.slice(8, 10)}.${date.slice(5, 7)}.${date.slice(0, 4)}`
+      : "";
+    onSubmit({
+      id: seminar?.id,
+      title,
+      description,
+      date: formattedDate,
+      time,
+      photo,
+    });
     onClose();
   };
 
@@ -116,7 +137,7 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
               Фото:
             </label>
             <input
-              type="url"
+              type="text"
               id="photo"
               className="modal__form_input"
               value={photo}
