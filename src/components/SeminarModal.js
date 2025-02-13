@@ -129,7 +129,7 @@ const SeminarModal = ({ seminar, isOpen, onClose, onSubmit }) => {
               id="time"
               className="modal__form_input"
               value={time}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => setTime(e.target.value)}
             />
           </div>
           <div className="modal__form">
